@@ -14,3 +14,8 @@ window.addEventListener("load", function() {
     })
     
  });
+//  const formSubmit= document.querySelector("input[name=formSubmit]");
+//  const pilot= document.querySelector("input[name=pilotName]");
+//  const copilot= document.querySelector("input[name=copilotName]");
+//  const fuelLevel = document.querySelector("input[name=fuelLevel]");
+//  const cargoMass = document.querySelector("input[name=cargoMass]");
