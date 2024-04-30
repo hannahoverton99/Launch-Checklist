@@ -14,6 +14,7 @@ window.addEventListener("load", function() {
     })
     
  });
+//  event.preventDefault();
 //  const formSubmit= document.querySelector("input[name=formSubmit]");
 //  const pilot= document.querySelector("input[name=pilotName]");
 //  const copilot= document.querySelector("input[name=copilotName]");
