@@ -4,18 +4,17 @@ require('cross-fetch/polyfill');
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    for(let i=0; i< json.length; i++){
-    missionTarget.innerHTML += ` <div id="missionTarget" data-testid="missionTarget">
+    missionTarget.innerHTML += `
     <h2>Mission Destination</h2>
     <ol>
-        <li>Name: ${json.planetName}</li>
-        <li>Diameter: ${json.diameter} km</li>
-        <li>Star: ${json.star}</li>
-        <li>Distance from Earth: ${json.distance} km from Earth</li>
-        <li>Number of Moons: ${json.moons} </li>
+        <li>Name: ${name}</li>
+        <li>Diameter: ${diameter} km</li>
+        <li>Star: ${star}</li>
+        <li>Distance from Earth: ${distance} km from Earth</li>
+        <li>Number of Moons: ${moons} </li>
     <ol>
-    <img src="${json[i].picture}">
-</div>  `
+    <img src="${imageUrl}">
+ `
     };
     // Here is the HTML formatting for our mission target div.
     /*
@@ -29,14 +28,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="">
     */
- }
+ 
  
  function validateInput(testInput) { //takes a string from a single field
             if (testInput === ""){
                 return "Empty";  
             };
             
-            if((isNAN(Number(testInput)))){
+            if((isNaN(Number(testInput)))){
                 return "Not a Number";
             }else{
                 return "Is a Number;"
@@ -86,19 +85,20 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     };
  };
  
- async function myFetch() {
+ async function myFetch() { //pass pick planet and add destination info into myFetch()?
      let planetsReturned;
  
      planetsReturned = await fetch (`https://handlers.education.launchcode.org/static/planets.json`).then( function(response) {
-        console.log(response)
+       // console.log(response)
+        return response.json();
              });
  
      return planetsReturned;
  };
  
- function pickPlanet(planets) {
-    let randomPlanet= Math.random(planets);
-    return randomPlanet;
+ function pickPlanet(planetsReturned) { 
+    let randomPlanet= Math.floor(Math.random()*planetsReturned.length);
+    return planetsReturned[randomPlanet];
     //math.random()
  }
  
