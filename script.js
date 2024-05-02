@@ -6,11 +6,16 @@ window.addEventListener("load", function() {
      const copilot= document.querySelector("input[name=copilotName]");
      const fuelLevel = document.querySelector("input[name=fuelLevel]");
      const cargoMass = document.querySelector("input[name=cargoMass]");
-  
-
-formSubmit.addEventListener('submit', ()=>{
-
-})
+     const pilotStatus= document.getElementById("pilotStatus");
+     const copilotStatus= document.getElementById("copilotStatus");
+     const fuelStatus= document.getElementById("fuelStatus");
+     const cargoStatus= document.getElementById("cargoStatus");
+     const launchStatus= document.getElementById("launchStatus");
+     const missionTarget= document.getElementById("missionTarget");
+formSubmit.addEventListener('click', (event)=>{
+formSubmission(pilot, copilot, fuelLevel, cargoMass, pilotStatus, copilotStatus, fuelStatus, cargoStatus, launchStatus);
+event.preventDefault();
+});
 
 
 

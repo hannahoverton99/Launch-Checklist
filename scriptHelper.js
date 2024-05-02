@@ -2,7 +2,21 @@
 
 require('cross-fetch/polyfill');
 
+
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+    for(let i=0; i< json.length; i++){
+    missionTarget.innerHTML += ` <div id="missionTarget" data-testid="missionTarget">
+    <h2>Mission Destination</h2>
+    <ol>
+        <li>Name: ${json.planetName}</li>
+        <li>Diameter: ${json.diameter} km</li>
+        <li>Star: ${json.star}</li>
+        <li>Distance from Earth: ${json.distance} km from Earth</li>
+        <li>Number of Moons: ${json.moons} </li>
+    <ol>
+    <img src="${json[i].picture}">
+</div>  `
+    };
     // Here is the HTML formatting for our mission target div.
     /*
                  <h2>Mission Destination</h2>
@@ -30,11 +44,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     };
     
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    const pilotStatus= document.getElementById("pilotStatus");
-    const copilotStatus= document.getElementById("copilotStatus");
-    const fuelStatus= document.getElementById("fuelStatus");
-    const cargoStatus= document.getElementById("cargoStatus");
-    const launchStatus= document.getElementById("launchStatus");
 
     if(validateInput(pilot) === "Empty"){
         alert("Need to enter pilot name!");
@@ -56,6 +65,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         launchStatus.style="color:red";
         launchStatus.innerHTML= "Shuttle Not Ready for Launch";
     }else{
+        fuelStatus.innerHTML= "Fuel level high enough for launch";
         launchStatus.style="visibility:visible";
         launchStatus.style= "color:green";
         launchStatus.innerHTML= "Shuttle is Ready for Launch";
@@ -69,6 +79,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         launchStatus.style="color:red";
         launchStatus.innerHTML= "Shuttle Not Ready for Launch";
     }else{
+        cargoStatus.innerHTML= "Cargo mass low enough for launch";
         launchStatus.style="visibility:visible";
         launchStatus.style="color:green";
         launchStatus.innerHTML= "Shuttle is Ready for Launch";
@@ -78,13 +89,17 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  async function myFetch() {
      let planetsReturned;
  
-     planetsReturned = await fetch().then( function(response) {
-         });
+     planetsReturned = await fetch (`https://handlers.education.launchcode.org/static/planets.json`).then( function(response) {
+        console.log(response)
+             });
  
      return planetsReturned;
- }
+ };
  
  function pickPlanet(planets) {
+    let randomPlanet= Math.random(planets);
+    return randomPlanet;
+    //math.random()
  }
  
  module.exports.addDestinationInfo = addDestinationInfo;
