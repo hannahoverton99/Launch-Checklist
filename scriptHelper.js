@@ -33,17 +33,20 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  function validateInput(testInput) { //takes a string from a single field
             if (testInput === ""){
                 return "Empty";  
-            };
-            
-            if((isNaN(Number(testInput)))){
+            }else if(isNaN(testInput)){
                 return "Not a Number";
             }else{
                 return "Is a Number;"
             };
     };
     
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-
+ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
+    const pilotStatus= document.getElementById("pilotStatus");
+    const copilotStatus= document.getElementById("copilotStatus");
+    const fuelStatus= document.getElementById("fuelStatus");
+    const cargoStatus= document.getElementById("cargoStatus");
+    const launchStatus= document.getElementById("launchStatus");
+    
     if(validateInput(pilot) === "Empty"){
         alert("Need to enter pilot name!");
     }else{
@@ -60,28 +63,32 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         alert("Need to enter a valid number");
     }else if(fuelLevel < 10000){
         fuelStatus.innerHTML= "Fuel level too low for launch";
-        launchStatus.style="visibility:visible";
-        launchStatus.style="color:red";
+        launchStatus.style.visibility="visible";
+        launchStatus.style.color="red";
         launchStatus.innerHTML= "Shuttle Not Ready for Launch";
+        faultyItems.style.visibility= "visible";
     }else{
         fuelStatus.innerHTML= "Fuel level high enough for launch";
-        launchStatus.style="visibility:visible";
-        launchStatus.style= "color:green";
+        launchStatus.style.visibility="visible";
+        launchStatus.style.color= "green";
         launchStatus.innerHTML= "Shuttle is Ready for Launch";
+        faultyItems.style.visibility= "visible";
     };
 
-    if(validateInput(cargoLevel) === "Not a Number"){
+    if(validateInput(cargoMass) === "Not a Number"){
         alert("Need to enter a valid number");
-    }else if(cargoStatus > 10000){
+    }else if(cargoMass > 10000){
         cargoStatus.innerHTML= "Cargo mass too heavy for launch";
-        launchStatus.style="visibility:visible";
-        launchStatus.style="color:red";
+        launchStatus.style.visibility="visible";
+        launchStatus.style.color= "red";
         launchStatus.innerHTML= "Shuttle Not Ready for Launch";
+        faultyItems.style.visibility= "visible"
     }else{
         cargoStatus.innerHTML= "Cargo mass low enough for launch";
-        launchStatus.style="visibility:visible";
-        launchStatus.style="color:green";
+        launchStatus.style.visibility="visible";
+        launchStatus.style.color="green";
         launchStatus.innerHTML= "Shuttle is Ready for Launch";
+        faultyItems.style.visibility= "visible";
     };
  };
  
