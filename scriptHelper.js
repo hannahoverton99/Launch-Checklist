@@ -4,13 +4,14 @@ require('cross-fetch/polyfill');
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+    const missionTarget= document.getElementById("missionTarget");
     missionTarget.innerHTML += `
     <h2>Mission Destination</h2>
     <ol>
         <li>Name: ${name}</li>
-        <li>Diameter: ${diameter} km</li>
+        <li>Diameter: ${diameter}</li>
         <li>Star: ${star}</li>
-        <li>Distance from Earth: ${distance} km from Earth</li>
+        <li>Distance from Earth: ${distance}</li>
         <li>Number of Moons: ${moons} </li>
     <ol>
     <img src="${imageUrl}">
@@ -36,7 +37,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
             }else if(isNaN(testInput)){
                 return "Not a Number";
             }else{
-                return "Is a Number;"
+                return "Is a Number"
             };
     };
     
@@ -46,7 +47,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const fuelStatus= document.getElementById("fuelStatus");
     const cargoStatus= document.getElementById("cargoStatus");
     const launchStatus= document.getElementById("launchStatus");
-    
+    const faultyItems= document.getElementById("faultyItems");
     if(validateInput(pilot) === "Empty"){
         alert("Need to enter pilot name!");
     }else{
@@ -64,7 +65,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     }else if(fuelLevel < 10000){
         fuelStatus.innerHTML= "Fuel level too low for launch";
         launchStatus.style.visibility="visible";
-        launchStatus.style.color="red";
+        launchStatus.style.color= "red";
         launchStatus.innerHTML= "Shuttle Not Ready for Launch";
         faultyItems.style.visibility= "visible";
     }else{

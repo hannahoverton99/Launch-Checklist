@@ -3,9 +3,8 @@
 
 window.addEventListener("load", function() {
     const formSubmit= document.getElementById("formSubmit");
-  
-    const missionTarget= document.getElementById("missionTarget");
-    const faultyItems= document.getElementById("faultyItems");
+    
+    
     
     formSubmit.addEventListener('click', async (event)=>{
         event.preventDefault();
