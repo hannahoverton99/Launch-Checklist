@@ -8,17 +8,17 @@ window.addEventListener("load", function() {
     
     formSubmit.addEventListener('click', async (event)=>{
         event.preventDefault();
-        console.log("form submitted")
+        // console.log("form submitted")
         
         const pilot= document.querySelector("input[name='pilotName']").value;
         const copilot= document.querySelector("input[name='copilotName']").value;
         const fuelLevel = Number(document.querySelector("input[name='fuelLevel']").value.trim());
         const cargoMass = Number(document.querySelector("input[name='cargoMass']").value.trim());
         
-        console.log("Fuel Level Value:", fuelLevel);
-        console.log("Cargo Mass Value:", cargoMass);
-        console.log("pilot name", pilot);
-        console.log("copilot name", copilot);
+        // console.log("Fuel Level Value:", fuelLevel);
+        // console.log("Cargo Mass Value:", cargoMass);
+        // console.log("pilot name", pilot);
+        // console.log("copilot name", copilot);
         await formSubmission(document, faultyItems, pilot, copilot, fuelLevel, cargoMass);
         
     });
