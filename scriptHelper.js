@@ -50,13 +50,15 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     const cargoStatus= document.getElementById("cargoStatus");
     const launchStatus= document.getElementById("launchStatus");
     const faultyItems= document.getElementById("faultyItems");
-    if(validateInput(pilot) === "Empty"){
+    if(validateInput(pilot)=== "Empty" && validateInput(copilot)=== "Empty"){
+        alert("Need to enter information!")
+    }else if(validateInput(pilot) === "Empty" && validateInput(copilot) !== "Empty"){
         alert("Need to enter pilot name!");
     }else{
         pilotStatus.innerHTML= `Pilot ${pilot} is ready for launch`;
     };
     
-    if(validateInput(copilot)=== "Empty"){
+    if(validateInput(pilot) !== "Empty" && validateInput(copilot) === "Empty"){
         alert("Need to enter copilot name!");
     }else{
         copilotStatus.innerHTML= `Co-pilot ${copilot} is ready for launch`
@@ -102,7 +104,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     }
  };
  
- async function myFetch() { //pass pick planet and add destination info into myFetch()?
+ async function myFetch() { 
      let planetsReturned;
  
      planetsReturned = await fetch (`https://handlers.education.launchcode.org/static/planets.json`).then( function(response) {
@@ -116,7 +118,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  function pickPlanet(planetsReturned) { 
     let randomPlanet= Math.floor(Math.random()*planetsReturned.length);
     return planetsReturned[randomPlanet];
-    //math.random()
+    
  }
  
  module.exports.addDestinationInfo = addDestinationInfo;
